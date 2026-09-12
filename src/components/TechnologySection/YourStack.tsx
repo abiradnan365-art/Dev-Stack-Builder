@@ -36,7 +36,8 @@ function YourStack({technologies, addedTechnologies, setAddedTechnologies}:YourS
                  {addedTechnologies.map((technologies) => 
                  
                  (
-                    <div className="  border-2 rounded-2xl border-gray-300 px-2 py-2 flex flex-row items-center">
+                    <div className="  border-2 rounded-2xl border-gray-300 px-2 py-2 flex flex-row items-center"
+                    key={technologies.id}>
                         <img className="h-9" src={technologies.icon} alt="" />
                     <div>  
                       <p>{technologies.name}</p>

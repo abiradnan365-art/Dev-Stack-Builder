@@ -5,6 +5,7 @@ import Hero from './components/Hero'
 import Navbar from './components/Navbar'
 import Technologies from './components/TechnologySection/Technologies'
 import type ITechnology from './type/Technology'
+import Footer from './components/Footer'
 
 
 
@@ -26,6 +27,7 @@ function App() {
       <Suspense fallback = {<div>Loding......</div>}>
         <Technologies technologiesPromise = {technologiesPromise()}></Technologies>
       </Suspense>
+      <Footer></Footer>
       
     </>
   )

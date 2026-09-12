@@ -30,18 +30,20 @@ function TechnologyCard({technologies, addedTechnologies, setAddedTechnologies}:
                      toast.success(`${technology.name} added to stack`, {
                          position: "bottom-right"
                      });
-                    }                   
+                }                   
 
     return (
-        <div className="grid grid-cols-3 gap-4 ">
+        <div className="grid grid-cols-3 gap-4 mb-50 ">
             {
                 technologies.map((technologies) => {
                      const isAdded = addedTechnologies.some(
-        item => item.id === technologies.id
-    );
+                     item => item.id === technologies.id
+                     );
                    
                     return (
-                    <div className="  items-start p-4 gap-4  border-2 rounded-2xl border-gray-200 shadow-sm">
+                         
+                    <div className="  items-start p-4 gap-4  border-2 rounded-2xl border-gray-200 shadow-sm"
+                    key={technologies.id}>
                         <div className="flex justify-between ">
                           <img  className="w-11 h-11 text-left  " src={technologies.icon} alt="" />
                           <button className="bg-blue-50 p-2 rounded-3xl text-blue-700">{technologies.badge}</button>
