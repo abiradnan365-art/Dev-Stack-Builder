@@ -1,16 +1,18 @@
 
 import { FaStar } from "react-icons/fa";
 import type ITechnology from "../../type/Technology";
-import { useState } from "react";
+import { useState, type Dispatch, type SetStateAction } from "react";
 import { MdOutlineCheck } from "react-icons/md";
 import { toast } from "react-toastify";
 
 interface TechnologyCardProps {
     technologies : ITechnology[],
+    addedTechnologies: ITechnology[],
+    setAddedTechnologies:Dispatch<SetStateAction<ITechnology[]>>
 }
 
 
-function TechnologyCard({technologies}:TechnologyCardProps) {
+function TechnologyCard({technologies, addedTechnologies, setAddedTechnologies}:TechnologyCardProps) {
     
     
 
@@ -24,10 +26,14 @@ function TechnologyCard({technologies}:TechnologyCardProps) {
                                  setIsAdded(true)
                                  
                                  if (IsAdded === false){
-                                    toast.success(`${technologies.name} added to stack`)
+                                    toast.success(`${technologies.name} added to stack`,{
+                                        position: "bottom-right"
+                                        })
                                  }
                                  else{
-                                    toast.error(`${technologies.name} already added`)
+                                    toast.error(`${technologies.name} already added`,{
+                                        position: "bottom-right"
+                                    })
                                  }
                             }
                     return (

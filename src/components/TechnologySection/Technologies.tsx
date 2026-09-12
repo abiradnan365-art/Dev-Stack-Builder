@@ -1,14 +1,18 @@
-import { use } from "react";
+import { use, useState,} from "react";
 import type ITechnology from "../../type/Technology";
 import TechnologyCard from "./TechnologyCard";
 import YourStack from "./YourStack";
 
 interface TechnologiesProps {
     technologiesPromise: Promise<ITechnology[]>;
+
 }
-function Technologies({technologiesPromise}: TechnologiesProps) {
+function Technologies({technologiesPromise,}: TechnologiesProps) {
     const technologies = use(technologiesPromise);
-    console.log(technologies)
+    // console.log(technologies)
+    const [addedTechnologies, setAddedTechnologies] = useState<ITechnology[]>([]);
+
+
     return (
         <div className="container max-w-6xl mx-auto  ">
             <div className="my-9 ">
@@ -18,12 +22,12 @@ function Technologies({technologiesPromise}: TechnologiesProps) {
             <div className="flex gap-5 items-start">
 
              <div className="flex-1">
-                <TechnologyCard technologies={technologies} />
+                <TechnologyCard technologies={technologies} addedTechnologies = {addedTechnologies} setAddedTechnologies = {setAddedTechnologies} />
             </div>
 
    
        <div>
-        <YourStack technologies = {technologies}></YourStack>
+        <YourStack technologies = {technologies} addedTechnologies = {addedTechnologies} setAddedTechnologies = {setAddedTechnologies}></YourStack>
        </div>
 
         </div>

@@ -1,11 +1,14 @@
 
+import type { Dispatch, SetStateAction } from "react";
 import type ITechnology from "../../type/Technology"
 
 interface YourStackProps{
     technologies: ITechnology[],
+    addedTechnologies: ITechnology[],
+    setAddedTechnologies:Dispatch<SetStateAction<ITechnology[]>>
 }
 
-function YourStack({technologies}:YourStackProps) {
+function YourStack({technologies, addedTechnologies, setAddedTechnologies}:YourStackProps) {
     return (
         <div className="  border-2 border-gray-200 rounded-2xl p-5 ">
             <h2 className="font-bold text-xl">Your Stack</h2>
