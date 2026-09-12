@@ -3,6 +3,7 @@ import { FaStar } from "react-icons/fa";
 import type ITechnology from "../../type/Technology";
 import { useState } from "react";
 import { MdOutlineCheck } from "react-icons/md";
+import { toast } from "react-toastify";
 
 interface TechnologyCardProps {
     technologies : ITechnology[],
@@ -19,7 +20,16 @@ function TechnologyCard({technologies}:TechnologyCardProps) {
                 technologies.map((technologies) => {
 
                     const  [IsAdded, setIsAdded] = useState (false)
-
+                        const handleAddTechnology = () => {
+                                 setIsAdded(true)
+                                 
+                                 if (IsAdded === false){
+                                    toast.success(`${technologies.name} added to stack`)
+                                 }
+                                 else{
+                                    toast.error(`${technologies.name} already added`)
+                                 }
+                            }
                     return (
                     <div className="  items-start p-4 gap-4  border-2 rounded-2xl border-gray-200 shadow-sm">
                         <div className="flex justify-between ">
@@ -37,7 +47,7 @@ function TechnologyCard({technologies}:TechnologyCardProps) {
                             <p className="flex items-center"> <FaStar /> {technologies.rating}</p>
                         </div>
                         <button 
-                        onClick={() => setIsAdded(true)}
+                        onClick={() => handleAddTechnology()}
                         className={` ${IsAdded  ? "bg-pink-50 text-black border border-pink-400" : "bg-black text-white"} px-20 py-2 mt-9 rounded-2xl
                          cursor-pointer flex justify-center `}
                          
