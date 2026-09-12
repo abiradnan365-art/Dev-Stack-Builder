@@ -10,7 +10,14 @@ interface YourStackProps{
 }
 
 function YourStack({technologies, addedTechnologies, setAddedTechnologies}:YourStackProps) {
-    console.log(addedTechnologies,setAddedTechnologies, "earr")
+    // console.log(addedTechnologies,setAddedTechnologies, )
+   const handleRemoveTechnology = (technology: ITechnology) => {
+    const restTechnologies = addedTechnologies.filter(
+        addedTechnology => addedTechnology.id !== technology.id
+    );
+
+    setAddedTechnologies(restTechnologies);
+};
     return (
         <div className="  border-2 border-gray-200 rounded-2xl  p-5 ">
             <h2 className="font-bold text-xl">Your Stack</h2>
@@ -26,19 +33,26 @@ function YourStack({technologies, addedTechnologies, setAddedTechnologies}:YourS
                 </p>
             </div>) : (
                 <div className="flex flex-col  gap-3 mt-6">
-                 {addedTechnologies.map((technologies) => (
+                 {addedTechnologies.map((technologies) => 
+                 
+                 (
                     <div className="  border-2 rounded-2xl border-gray-300 px-2 py-2 flex flex-row items-center">
                         <img className="h-9" src={technologies.icon} alt="" />
                     <div>  
                       <p>{technologies.name}</p>
                       <p className="text-sm text-gray-500">{technologies.category}</p>
                     </div> 
-                        <RxCross2 className="ml-auto cursor-pointer" />
+                    <span className="ml-auto cursor-pointer text-gray-500 "
+                    onClick={() => handleRemoveTechnology(technologies)}>
+                        <RxCross2 className="" />
+                    </span>
+                        
                     
                     </div>
                 
                 ))}
-                <button className="mt-9 border-1 border-red-400 text-red-500 py-2 rounded-2xl ">Remove All</button>
+                <button className="mt-9 border-1 border-red-400 text-red-500 py-2 rounded-2xl cursor-pointer "
+                onClick={() => setAddedTechnologies([])}>Remove All</button>
             </div>
                
             )} 

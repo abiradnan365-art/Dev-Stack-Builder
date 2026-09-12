@@ -1,7 +1,7 @@
 
 import { FaStar } from "react-icons/fa";
 import type ITechnology from "../../type/Technology";
-import { useState, type Dispatch, type SetStateAction } from "react";
+import {  type Dispatch, type SetStateAction } from "react";
 import { MdOutlineCheck } from "react-icons/md";
 import { toast } from "react-toastify";
 import YourStack from "./YourStack";
@@ -15,31 +15,31 @@ interface TechnologyCardProps {
 
 function TechnologyCard({technologies, addedTechnologies, setAddedTechnologies}:TechnologyCardProps) {
     
-    
+     
+                const handleAddTechnology = (technology: ITechnology) => {
+
+                    if (addedTechnologies.some(item => item.id === technology.id)) {
+                        toast.error(`${technology.name} already added`, {
+                            position: "bottom-right"
+                        });
+                        return;
+                    }
+
+                     setAddedTechnologies([...addedTechnologies, technology]);
+
+                     toast.success(`${technology.name} added to stack`, {
+                         position: "bottom-right"
+                     });
+                    }                   
 
     return (
         <div className="grid grid-cols-3 gap-4 ">
             {
                 technologies.map((technologies) => {
-
-                    const  [isAdded, setIsAdded] = useState (false)
-                        const handleAddTechnology = () => {
-                                 setIsAdded(true)
-                                 
-                                 if (isAdded){
-                                    toast.error(`${technologies.name} already added`,{
-                                        position: "bottom-right"
-                                    })
-                                    return ;
-                                 }
-                                 setAddedTechnologies([...addedTechnologies, technologies]);
-                                 
-                                    toast.success(`${technologies.name} added to stack`,{
-                                        position: "bottom-right"
-                                        })
-                                 
-                                 
-                            }
+                     const isAdded = addedTechnologies.some(
+        item => item.id === technologies.id
+    );
+                   
                     return (
                     <div className="  items-start p-4 gap-4  border-2 rounded-2xl border-gray-200 shadow-sm">
                         <div className="flex justify-between ">
@@ -57,7 +57,7 @@ function TechnologyCard({technologies, addedTechnologies, setAddedTechnologies}:
                             <p className="flex items-center"> <FaStar /> {technologies.rating}</p>
                         </div>
                         <button 
-                        onClick={() => handleAddTechnology()}
+                        onClick={() => handleAddTechnology(technologies)}
                         className={` ${isAdded  ? "bg-pink-50 text-black border border-pink-400" : "bg-black text-white"} px-20 py-2 mt-9 rounded-2xl
                          cursor-pointer flex justify-center `}
                          
