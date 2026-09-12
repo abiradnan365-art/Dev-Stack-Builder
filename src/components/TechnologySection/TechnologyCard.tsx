@@ -4,7 +4,7 @@ import type ITechnology from "../../type/Technology";
 import {  type Dispatch, type SetStateAction } from "react";
 import { MdOutlineCheck } from "react-icons/md";
 import { toast } from "react-toastify";
-import YourStack from "./YourStack";
+
 
 interface TechnologyCardProps {
     technologies : ITechnology[],
@@ -33,7 +33,7 @@ function TechnologyCard({technologies, addedTechnologies, setAddedTechnologies}:
                 }                   
 
     return (
-        <div className="grid grid-cols-3 gap-4 mb-50 ">
+        <div className="grid grid-cols-3 gap-4 mb-50">
             {
                 technologies.map((technologies) => {
                      const isAdded = addedTechnologies.some(

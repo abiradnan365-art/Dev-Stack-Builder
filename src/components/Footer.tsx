@@ -32,6 +32,13 @@ function Footer() {
                 </div>
 
             </div>
+            <div>
+                <h4 className="font-bold text-lg">LEGAL</h4>
+                <div className="flex flex-col text-gray-500">
+                    <a href="">Privacy Policy</a>
+                    <a href="">Terms of Service</a>
+                </div>
+            </div>
         </div>
          <hr className="text-gray-200 mb-15"/>
 

@@ -1,7 +1,7 @@
 import hero from "../assets/banner-stack.png"
 function Hero() {
     return (
-        <div className="flex justify-between items-center container max-w-6xl mx-auto">
+        <div className="flex  justify-between items-center container max-w-6xl mx-auto">
             <div className="">
                 <h1 className="text-4xl font-bold my-4 ">Build Your Ideal <br /> <span  className="bg-gradient-to-r from-[#FF5722] via-[#D81B7E] to-[#7C3AED] bg-clip-text text-transparent">Development Stack</span> </h1>
                 <p className=" my-3">Explore frontend, backend, database, and tooling options,<br />
