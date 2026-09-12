@@ -4,6 +4,7 @@ import type ITechnology from "../../type/Technology";
 import { useState, type Dispatch, type SetStateAction } from "react";
 import { MdOutlineCheck } from "react-icons/md";
 import { toast } from "react-toastify";
+import YourStack from "./YourStack";
 
 interface TechnologyCardProps {
     technologies : ITechnology[],
@@ -21,20 +22,23 @@ function TechnologyCard({technologies, addedTechnologies, setAddedTechnologies}:
             {
                 technologies.map((technologies) => {
 
-                    const  [IsAdded, setIsAdded] = useState (false)
+                    const  [isAdded, setIsAdded] = useState (false)
                         const handleAddTechnology = () => {
                                  setIsAdded(true)
                                  
-                                 if (IsAdded === false){
-                                    toast.success(`${technologies.name} added to stack`,{
-                                        position: "bottom-right"
-                                        })
-                                 }
-                                 else{
+                                 if (isAdded){
                                     toast.error(`${technologies.name} already added`,{
                                         position: "bottom-right"
                                     })
+                                    return ;
                                  }
+                                 setAddedTechnologies([...addedTechnologies, technologies]);
+                                 
+                                    toast.success(`${technologies.name} added to stack`,{
+                                        position: "bottom-right"
+                                        })
+                                 
+                                 
                             }
                     return (
                     <div className="  items-start p-4 gap-4  border-2 rounded-2xl border-gray-200 shadow-sm">
@@ -54,14 +58,15 @@ function TechnologyCard({technologies, addedTechnologies, setAddedTechnologies}:
                         </div>
                         <button 
                         onClick={() => handleAddTechnology()}
-                        className={` ${IsAdded  ? "bg-pink-50 text-black border border-pink-400" : "bg-black text-white"} px-20 py-2 mt-9 rounded-2xl
+                        className={` ${isAdded  ? "bg-pink-50 text-black border border-pink-400" : "bg-black text-white"} px-20 py-2 mt-9 rounded-2xl
                          cursor-pointer flex justify-center `}
                          
                          >
-                            {IsAdded === true ? (<>
+                            {isAdded === true ? (<>
                             <MdOutlineCheck /> <span>{"Added to Stack"}</span>
                             </>) : "Add to Stack"}
                             </button>
+                           
                     </div>
                     )
                 })
