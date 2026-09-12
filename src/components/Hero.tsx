@@ -9,7 +9,7 @@ function Hero() {
                     next project.
                 </p>
                 
-                    <button className="bg-orange-400 m-2 p-2 rounded-xl text-white hover:bg-orange-500 cursor-pointer">Explore Technologies</button>
+                    <button className="bg-gradient-to-r from-[#FF5722] via-[#D81B7E] to-[#7C3AED]  text-transparent m-2 p-2 rounded-xl text-white hover:bg-orange-500 cursor-pointer">Explore Technologies</button>
                     <button className="border border-gray-400 m-1 p-2 rounded-xl hover:bg-gray-300 cursor-pointer ">Learn More</button>
               
             </div>

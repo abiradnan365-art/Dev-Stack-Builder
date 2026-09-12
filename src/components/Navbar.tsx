@@ -6,7 +6,7 @@ function Navbar() {
             <div className="flex justify-between container mx-auto max-w-6xl my-2">
                 <img className="h-full" src={logo} alt="" />
                 <div className="flex gap-6 items-center cursor-pointer">
-                    <a className="text-pink-500 hover:text-pink-700" href="/">Home</a>
+                    <a className="text-pink-500 hover:text-pink-700" href="">Home</a>
                     <a href="">Technologies</a>
                     <a href="">Projects</a>
                     <a href="">About</a>
