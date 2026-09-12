@@ -21,7 +21,7 @@ function TechnologyCard({technologies}:TechnologyCardProps) {
                         
 
                         <div className="card-body ">
-                             <h2 className="card-title font-bold my-4 text-xl">{technologies.name}</h2>
+                             <h2 className="font-bold my-4 text-xl">{technologies.name}</h2>
                             <p className="mb-8">{technologies.description}</p>
                         </div>
                         <div className="flex justify-between">
@@ -29,7 +29,7 @@ function TechnologyCard({technologies}:TechnologyCardProps) {
                             <p className="text-gray-600">{technologies.difficulty}</p>
                             <p className="flex items-center"> <FaStar /> {technologies.rating}</p>
                         </div>
-                        <button className="bg-black px-31 py-2 mt-9 rounded-2xl cursor-pointer text-white flex justify-center  ">Add to Stack</button>
+                        <button className="bg-black px-20 py-2 mt-9 rounded-2xl cursor-pointer text-white flex justify-center  ">Add to Stack</button>
                     </div>
                     )
                 })
