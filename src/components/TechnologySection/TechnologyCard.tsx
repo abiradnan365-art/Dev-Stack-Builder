@@ -1,6 +1,8 @@
 
 import { FaStar } from "react-icons/fa";
 import type ITechnology from "../../type/Technology";
+import { useState } from "react";
+import { MdOutlineCheck } from "react-icons/md";
 
 interface TechnologyCardProps {
     technologies : ITechnology[],
@@ -8,10 +10,16 @@ interface TechnologyCardProps {
 
 
 function TechnologyCard({technologies}:TechnologyCardProps) {
+    
+    
+
     return (
         <div className="grid grid-cols-3 gap-4 ">
             {
                 technologies.map((technologies) => {
+
+                    const  [IsAdded, setIsAdded] = useState (false)
+
                     return (
                     <div className="  items-start p-4 gap-4  border-2 rounded-2xl border-gray-200 shadow-sm">
                         <div className="flex justify-between ">
@@ -19,7 +27,6 @@ function TechnologyCard({technologies}:TechnologyCardProps) {
                           <button className="bg-blue-50 p-2 rounded-3xl text-blue-700">{technologies.badge}</button>
                         </div>
                         
-
                         <div className="card-body ">
                              <h2 className="font-bold my-4 text-xl">{technologies.name}</h2>
                             <p className="mb-8">{technologies.description}</p>
@@ -29,7 +36,16 @@ function TechnologyCard({technologies}:TechnologyCardProps) {
                             <p className="text-gray-600">{technologies.difficulty}</p>
                             <p className="flex items-center"> <FaStar /> {technologies.rating}</p>
                         </div>
-                        <button className="bg-black px-20 py-2 mt-9 rounded-2xl cursor-pointer text-white flex justify-center  ">Add to Stack</button>
+                        <button 
+                        onClick={() => setIsAdded(true)}
+                        className={` ${IsAdded  ? "bg-pink-50 text-black border border-pink-400" : "bg-black text-white"} px-20 py-2 mt-9 rounded-2xl
+                         cursor-pointer flex justify-center `}
+                         
+                         >
+                            {IsAdded === true ? (<>
+                            <MdOutlineCheck /> <span>{"Added to Stack"}</span>
+                            </>) : "Add to Stack"}
+                            </button>
                     </div>
                     )
                 })
