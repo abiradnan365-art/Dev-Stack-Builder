@@ -2,6 +2,8 @@
 import type { Dispatch, SetStateAction } from "react";
 import type ITechnology from "../../type/Technology"
 import { RxCross2 } from "react-icons/rx";
+import { toast } from "react-toastify";
+import Technologies from "./Technologies";
 
 interface YourStackProps{
     technologies: ITechnology[],
@@ -17,6 +19,9 @@ function YourStack({ addedTechnologies, setAddedTechnologies}:YourStackProps) {
     );
 
     setAddedTechnologies(restTechnologies);
+    toast.info(`${technology.name} remove from your stack`,{
+        position: "bottom-right"
+    })
 };
     return (
         <div className="  border-2 border-gray-200 rounded-2xl  p-5 ">
@@ -31,6 +36,7 @@ function YourStack({ addedTechnologies, setAddedTechnologies}:YourStackProps) {
             {addedTechnologies.length === 0? (
                 <div className="border border-dashed border-gray-300 rounded-lg h-26 mt-6 flex items-center justify-center">
                 <p className="text-sm text-gray-400">
+
                     Your stack is empty.
                 </p>
             </div>) : (
@@ -56,7 +62,14 @@ function YourStack({ addedTechnologies, setAddedTechnologies}:YourStackProps) {
                 
                 ))}
                 <button className="mt-9 border-1 border-red-400 text-red-500 py-2 rounded-2xl cursor-pointer "
-                onClick={() => setAddedTechnologies([])}>Remove All</button>
+                onClick={() =>{setAddedTechnologies([]) ,
+                    toast.info("All technologies removed from your stack!",{
+                        position: "bottom-right"
+                    })
+                } }
+                
+                
+                >Remove All</button>
             </div>
                
             )} 
