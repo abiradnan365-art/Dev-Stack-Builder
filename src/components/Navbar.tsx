@@ -2,7 +2,7 @@ import logo from "../assets/logo-text.png"
 
 function Navbar() {
     return (
-        <nav className="bg-white" >
+        <nav className="bg-white sticky top-0" >
             <div className="flex justify-between container mx-auto max-w-6xl my-2">
                 <img className="h-full" src={logo} alt="" />
                 <div className="flex gap-6 items-center cursor-pointer">

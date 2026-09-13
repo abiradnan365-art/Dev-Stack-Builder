@@ -3,7 +3,7 @@ import type { Dispatch, SetStateAction } from "react";
 import type ITechnology from "../../type/Technology"
 import { RxCross2 } from "react-icons/rx";
 import { toast } from "react-toastify";
-import Technologies from "./Technologies";
+
 
 interface YourStackProps{
     technologies: ITechnology[],
