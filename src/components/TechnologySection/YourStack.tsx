@@ -9,7 +9,7 @@ interface YourStackProps{
     setAddedTechnologies:Dispatch<SetStateAction<ITechnology[]>>
 }
 
-function YourStack({technologies, addedTechnologies, setAddedTechnologies}:YourStackProps) {
+function YourStack({ addedTechnologies, setAddedTechnologies}:YourStackProps) {
     // console.log(addedTechnologies,setAddedTechnologies, )
    const handleRemoveTechnology = (technology: ITechnology) => {
     const restTechnologies = addedTechnologies.filter(
@@ -22,9 +22,11 @@ function YourStack({technologies, addedTechnologies, setAddedTechnologies}:YourS
         <div className="  border-2 border-gray-200 rounded-2xl  p-5 ">
             <h2 className="font-bold text-xl">Your Stack</h2>
 
-            <p className="text-sm text-gray-400 mt-1">
-                No technologies selected yet.
-            </p>
+            <div className="text-sm text-gray-400 mt-1">
+                {addedTechnologies.length === 0 ? "No technologies selected yet." 
+                : `${addedTechnologies.length} Technology Selected`
+                }
+            </div>
 
             {addedTechnologies.length === 0? (
                 <div className="border border-dashed border-gray-300 rounded-lg h-26 mt-6 flex items-center justify-center">
@@ -47,6 +49,7 @@ function YourStack({technologies, addedTechnologies, setAddedTechnologies}:YourS
                     onClick={() => handleRemoveTechnology(technologies)}>
                         <RxCross2 className="" />
                     </span>
+
                         
                     
                     </div>
